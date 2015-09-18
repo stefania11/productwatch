@@ -1,5 +1,8 @@
 class SearchController < ApplicationController
+  include AWSProductParser
+  
   def index
-    @items = Search.for(params[:q])
+    request = build_product_request(params[:q])
+    @items = get_product_response(request)
   end
 end
