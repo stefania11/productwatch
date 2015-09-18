@@ -1,5 +1,5 @@
-module AWSProductParser
-  def build_product_request(keyword)
+class AWSProductParser
+  def self.build_product_request(keyword)
     # initialize sucker gem
     request = Sucker.new(
       :key    => ENV['AWS_ACCESS_KEY_ID'],
@@ -18,7 +18,7 @@ module AWSProductParser
     request
   end
 
-  def get_product_response(request)
+  def self.get_product_response(request)
     response = request.get
     response.to_hash
   end
