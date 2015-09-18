@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
     # build a request
     @request << {
       :operation     => 'ItemSearch',
-      :keywords      => 'iphone 6',
+      :keywords      => 'rolex',
       :search_index  => 'All',
       # :brand         => 'Samsung',
       :ResponseGroup => 'Large',
