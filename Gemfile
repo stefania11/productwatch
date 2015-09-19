@@ -8,6 +8,8 @@ gem 'dotenv-rails', :groups => [:development, :test]
 # Amazon Web Services Wrapper
 gem 'sucker'
 
+gem 'nokogiri'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 
