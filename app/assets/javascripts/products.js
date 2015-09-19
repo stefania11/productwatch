@@ -1,1 +1,1 @@
-var review = $('.class').val();
+var review = $('div .reviewText').text();

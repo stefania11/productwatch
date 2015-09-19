@@ -2,6 +2,7 @@
   <h1>Total Search Results: <%= @items['Items']['TotalResults'] %></h1><hr>
   <% @items['Items']['Item'].each do |item| %>
       <% if item['CustomerReviews']['HasReviews'] == 'true' %>
+        <img src="<%= item['MediumImage']['URL'] %>" alt="<%= item['ItemAttributes']['Title'] %>" />
         <h3><%= item['ItemAttributes']['Title'] %></h3>
         <iframe src="<%= item['CustomerReviews']['IFrameURL'] %>"</iframe>
       <% end %>
