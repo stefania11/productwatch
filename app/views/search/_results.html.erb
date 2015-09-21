@@ -11,6 +11,10 @@
       <p>Usefulness: <%= review[:votes] %></p>
       <p>Published: <%= review[:date] %></p>
       <hr>
+  <p>The most negative sentence of the review: <%= review[:low_sentence] %></p>
+      <p>The most positive sentence of the review: <%= review[:high_sentence] %></p>
+      <p>The overall sentinment of the review: <%= review[:overall_sentiment] %></p>
+
       <p><%= review[:content] %></p>
       <hr>
     <% end %>

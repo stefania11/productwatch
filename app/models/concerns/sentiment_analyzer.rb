@@ -1,7 +1,7 @@
 require 'sentimental'
 require 'pry'
 
-class SentimentAnalyzer
+module SentimentAnalyzer
 
   Sentimental.load_defaults
   Sentimental.threshold = 0.1
@@ -41,8 +41,6 @@ class SentimentAnalyzer
     }
 
   end
-  
-  binding.pry
   
 
 end
