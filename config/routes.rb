@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'products#index', alias: 'root_url'
   get '/search' => 'search#index'
+  get '/map' => 'map#index'
+
+  # post '/search' => 'products#index'
   get '/pac14850807.html' => redirect('/pac14850807.html')
 
   resources :products

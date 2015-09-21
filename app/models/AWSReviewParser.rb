@@ -3,7 +3,7 @@ require 'open-uri'
 
 class AWSReviewParser
   include ::SentimentAnalyzer
-  
+
   BASE_URL = "http://www.amazon.com"
   NUMBER_OF_PAGES = 3
 
@@ -24,7 +24,8 @@ class AWSReviewParser
           title: r.css('a.review-title').text,
           content: r.css('span.review-text').text,
           author_url: BASE_URL + r.css('a.author').first['href'],
-          review_url: BASE_URL + r.css('a.review-title').first['href'],          low_sentence: sentiment_data[:low],
+          review_url: BASE_URL + r.css('a.review-title').first['href'],
+          low_sentence: sentiment_data[:low],
           high_sentence: sentiment_data[:high],
           overall_sentiment: sentiment_data[:overall]
         }
