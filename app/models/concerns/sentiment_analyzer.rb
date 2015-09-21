@@ -1,5 +1,4 @@
 require 'sentimental'
-require 'pry'
 
 module SentimentAnalyzer
 
