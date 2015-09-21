@@ -16,7 +16,7 @@ class SearchController < ApplicationController
       items: []
     }
 
-    items['Items']['Item'].each do |item|
+    items['Items']['Item'].each.with_index(1) do |item, i|
       if item['CustomerReviews']['HasReviews'] == 'true'
         results[:items] << {
           id: item['ASIN'],
@@ -24,6 +24,7 @@ class SearchController < ApplicationController
           image_url: item['MediumImage']['URL'],
           reviews: AWSReviewParser.parse_reviews(item['ASIN'])
         }
+        break if i >= 1
       end
     end
     results
