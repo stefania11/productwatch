@@ -5,6 +5,7 @@ class AWSReviewParser
   BASE_URL = "http://www.amazon.com"
   PAGE_NUMBER = 1
 
+
   def self.parse_reviews(item_id)
     url = "#{BASE_URL}/product-reviews/#{item_id}?pageNumber=#{PAGE_NUMBER}"
     page = Nokogiri::HTML(open(url))

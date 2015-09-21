@@ -1,12 +1,15 @@
 source 'https://rubygems.org'
 
-ruby '2.2.0'
+ruby '2.2.1'
 
 # include .env files
 gem 'dotenv-rails', :groups => [:development, :test]
 
 # Amazon Web Services Wrapper
 gem 'sucker'
+
+# Sentiment analysis gem
+gem 'sentimental'
 
 gem 'nokogiri'
 
