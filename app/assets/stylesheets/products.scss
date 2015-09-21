@@ -25,7 +25,9 @@ iframe {
   margin: 25px auto;
 }
 
-.negative-review,
-.postive-review{
-  display: none;
+.negative-review {
+  color: red;
+}
+.positive-review {
+  color: green;
 }
