@@ -11,7 +11,7 @@
       <p>Usefulness: <%= review[:votes] %></p>
       <p>Published: <%= review[:date] %></p>
       <hr>
-      <% if review[:overall_sentiment] == :negative %>
+      <% if review[:overall_sentiment] == "negative." %>
         <div class='negative-review' style='color:red'><p>The most negative sentence of the review: <%= review[:low_sentence] %></p></div>
         <div class='overall' style='color:red'>The overall sentinment of the review: <%= review[:overall_sentiment] %></p></div>
       <% else %>

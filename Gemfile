@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.1'
+ruby '2.2.0'
 
 # include .env files
 gem 'dotenv-rails', :groups => [:development, :test]
