@@ -9,15 +9,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<script>
-  // if ($(".overall").data(p, "overall") == "positive" ){
-    $(".positive-review").style("color", "red");
-    $(".positive-review").show();
-  // } else {
-    $(".negative-review").style("color", "red");
-    $(".negative-review").show();
-  // }
-</script>
+// <script>
+//     $(document).ready(function(){
+//       if ($(".overall p").attr('data-overall') == "positive" ){
+//         debugger;
+//
+//         $(".negative-review").show();
+//       } else {
+//         $(".positive-review").show();
+//       }
+//     });
+// </script>
 
 <%= yield %>
 

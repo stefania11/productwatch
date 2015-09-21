@@ -23,8 +23,8 @@ class AWSReviewParser
           author: r.css('a.author').text,
           title: r.css('a.review-title').text,
           content: r.css('span.review-text').text,
-          author_url: BASE_URL + r.css('a.author').first['href'],
-          review_url: BASE_URL + r.css('a.review-title').first['href'],
+          author_url: BASE_URL + html_path_from_nokogiri(r,'a.author'),
+          review_url: BASE_URL + html_path_from_nokogiri(r,'a.review-title'),
           low_sentence: sentiment_data[:low],
           high_sentence: sentiment_data[:high],
           overall_sentiment: sentiment_data[:overall]
@@ -32,5 +32,13 @@ class AWSReviewParser
       end
     end
     review_array
+  end
+
+  def self.html_path_from_nokogiri(r,tag)
+    if r.css(tag).first
+      return r.css(tag).first['href']
+    else
+      return "/"
+    end
   end
 end
