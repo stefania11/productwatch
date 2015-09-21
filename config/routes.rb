@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  root 'products#index'
+  root 'products#index', alias: 'root_url'
   get '/search' => 'search#index'
+  get '/map' => 'map#index'
+
   # post '/search' => 'products#index'
 
   resources :products
