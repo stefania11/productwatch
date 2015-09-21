@@ -34,6 +34,8 @@ class AWSReviewParser
     review_array
   end
 
+  private
+  
   def self.html_path_from_nokogiri(r,tag)
     if r.css(tag).first
       return r.css(tag).first['href']
@@ -41,4 +43,5 @@ class AWSReviewParser
       return "/"
     end
   end
+  
 end
