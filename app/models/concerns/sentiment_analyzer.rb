@@ -23,6 +23,8 @@ module SentimentAnalyzer
   end
 
   def self.sentiment_data(text)
+    return { high: "", low: "", overall: ""} if text == ""
+
     text_with_sentiment = sentiment_of_sentences(text)
     low = text_with_sentiment.first
     high = text_with_sentiment.first
@@ -34,10 +36,13 @@ module SentimentAnalyzer
       end
     end
 
+    high[0] = high[0] + "." unless high[0][-1,1] == '.' || high[0][-1,1] == '!'
+    low[0] = low[0] + "." unless low[0][-1,1] == '.' || high[0][-1,1] == '!'
+                                                        
     {
       high: high[0],
       low: low[0],
-      overall: overall_sentiment(text)
+      overall: overall_sentiment(text).to_s + "."
     }
 
   end
