@@ -8,4 +8,9 @@ class ProductsController < ApplicationController
 
   def search
   end
+
+  def ebayverify
+    render 'ebay-verify.html.erb'
+  end
+  
 end

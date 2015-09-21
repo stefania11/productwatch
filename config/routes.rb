@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'products#index', alias: 'root_url'
   get '/search' => 'search#index'
-  # post '/search' => 'products#index'
+  get '/pac14850807.html' => 'products#ebayverify'
 
   resources :products
   # The priority is based upon order of creation: first created -> highest priority.
