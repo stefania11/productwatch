@@ -8,6 +8,9 @@ gem 'responders', '~> 2.0'
 # Amazon Web Services Wrapper
 gem 'sucker'
 
+# Sentiment analysis gem
+gem 'sentimental'
+
 gem 'nokogiri'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

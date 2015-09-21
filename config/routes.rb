@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/map' => 'map#index'
 
   # post '/search' => 'products#index'
+  get '/pac14850807.html' => redirect('/pac14850807.html')
 
   resources :products
   # The priority is based upon order of creation: first created -> highest priority.
