@@ -5,6 +5,7 @@ class AWSReviewParser
   BASE_URL = "http://www.amazon.com"
   NUMBER_OF_PAGES = 3
 
+
   def self.parse_reviews(item_id)
     review_array = []
     1.upto(NUMBER_OF_PAGES) do |i|
