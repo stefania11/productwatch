@@ -6,8 +6,7 @@ ruby '2.2.1'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'responders', '~> 2.0'
 # Amazon Web Services Wrapper
-gem 'sucker'
-
+gem 'vacuum'
 # Sentiment analysis gem
 gem 'sentimental'
 

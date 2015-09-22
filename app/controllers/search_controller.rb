@@ -2,13 +2,13 @@ class SearchController < ApplicationController
 
   def index
     #show a list of products w/o reviews
-    @products = ProductParser.build_results_hash(params[:q])
+    @products = ProductParser.call(params[:q])
   end
 
   def results
     #shows the review based on what the user clicks
     @product = params[:product]
-    @product[:reviews] = ReviewParser.parse_reviews(params[:product][:id])
+    @product[:reviews] = ReviewParser.call(params[:product][:id])
   end
 
   private
