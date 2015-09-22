@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
-  <% @products.each do |product| %>
+    <% @products.each do |product| %>
+    <% if product %>
     <form method="get" action="/results">
       <input type="hidden" name="product[id]" value="<%= product.id %>" >
       <input type="hidden" name="product[title]" value="<%= product.title %>" >
@@ -10,6 +11,7 @@
         <p style="font-size:11px"><%= product.title %></p>
       </div>
     </form>
+    <% end %>
   <% end %>
   </div>
 </div>
