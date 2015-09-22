@@ -2,13 +2,16 @@
   <div class="row">
   <h1>Total Search Results: <%= @results[:search_results] %></h1><hr>
   <% @results[:items].each do |item| %>
-  <form method="get" action="/results">
-    <input type="hidden" value="<%= item %>" >
-  <div class="col-lg-3 col-md-4 col-xs-6 thumb" style="overflow:hidden;height:260px;min-width:300px;">
-    <input type="image" class="thumbnail" src="<%= item[:image_url] %>" style="height:220px;width:100%;min-width:300px;min-height:100px;padding-bottom:0px;margin-bottom:5px;">
-    <p style="font-size:11px"><%= item[:title] %></p>
-  </div>
-  </form>
+    <form method="post" action="/results">
+      <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+      <input type="hidden" name="item[id]" value="<%= item[:id] %>" >
+      <input type="hidden" name="item[title]" value="<%= item[:title] %>" >
+      <input type="hidden" name="item[image_url]" value="<%= item[:image_url] %>" >
+      <div class="col-lg-3 col-md-4 col-xs-6 thumb" style="overflow:hidden;height:260px;min-width:300px;">
+        <input type="image" class="thumbnail" src="<%= item[:image_url] %>" style="height:220px;width:100%;min-width:300px;min-height:100px;padding-bottom:0px;margin-bottom:5px;">
+        <p style="font-size:11px"><%= item[:title] %></p>
+      </div>
+    </form>
   <% end %>
   </div>
 </div>

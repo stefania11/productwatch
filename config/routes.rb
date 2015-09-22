@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/search' => 'search#index'
   get '/map' => 'map#index'
   get '/results' => 'search#results'
-
+  post '/results' => 'search#results'
   # post '/search' => 'products#index'
   get '/pac14850807.html' => redirect('/pac14850807.html')
 

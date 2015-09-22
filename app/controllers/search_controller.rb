@@ -10,6 +10,7 @@ class SearchController < ApplicationController
   def results
     #shows the review based on what the user clicks
     @item = params[:item]
+    @item[:reviews] = ReviewParser.parse_reviews(params[:item][:id])
   end
 
   private
@@ -24,8 +25,7 @@ class SearchController < ApplicationController
         results[:items] << {
           id: item['ASIN'],
           title: item['ItemAttributes']['Title'],
-          image_url: image_or_default(item),
-          reviews_url: item['ASIN']
+          image_url: image_or_default(item)
         }
       end
     end
@@ -38,5 +38,9 @@ class SearchController < ApplicationController
     else
       return 'default.jpg'
     end
+  end
+
+  def item_params
+    params.require(:item).permit(:id, :title, :image_url)
   end
 end
