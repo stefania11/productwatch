@@ -5,6 +5,7 @@
     <h3><%= item[:title] %></h3>
   <div class="review">
     <% item[:reviews].each.with_index(1) do |review, i| %>
+      <%= { review[:author_location] => review[:rating][0] } %>
       <h4><%= i %>) <%= review[:title] %></h4>
       <p>Rating: <%= review[:rating] %></p>
       <p>Author: <%= review[:author] %></p>

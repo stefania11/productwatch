@@ -63,9 +63,9 @@ module ProfileParser
       state_short = LOCATION_HASH.values.select { |state| state if raw_location.include?(state) }
       state_full = LOCATION_HASH.keys.select { |state| state if raw_location.include?(state.upcase) }
       case
-      when !state_short.empty? then location = state_short.first
-      when !state_full.empty? then location = LOCATION_HASH[state_full.first]
-      else location = 'Not Specified'
+        when !state_short.empty? then location = state_short.first
+        when !state_full.empty? then location = LOCATION_HASH[state_full.first]
+        else location = 'Not Specified'
       end
     else
       location = 'Not Specified'
