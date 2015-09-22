@@ -45,7 +45,7 @@ var svg = d3.select("body").append("svg")
     .attr("height", height);
 
 queue()
-    .defer(d3.json, "us.json")
+    .defer(d3.json, "/products/7.json")
     .defer(d3.tsv, "unemployment.tsv", function(d) { rateById.set(d.id, +d.rate); })
     .await(ready);
 
