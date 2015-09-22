@@ -1,9 +1,15 @@
 class SearchController < ApplicationController
 
   def index
+    #show a list of products w/o reviews
     request = ProductParser.build_product_request(params[:q])
     items = ProductParser.get_product_response(request)
     @results = build_results_hash(items)
+  end
+
+  def results
+    #shows the review based on what the user clicks
+    @item = params[:item]
   end
 
   private
@@ -18,12 +24,19 @@ class SearchController < ApplicationController
         results[:items] << {
           id: item['ASIN'],
           title: item['ItemAttributes']['Title'],
-          image_url: item['LargeImage']['URL'],
-          reviews: ReviewParser.parse_reviews(item['ASIN'])
+          image_url: image_or_default(item),
+          reviews_url: item['ASIN']
         }
-        break if i >= 1
       end
     end
     results
+  end
+
+  def image_or_default(item)
+    if item['LargeImage']
+      return item['LargeImage']['URL']
+    else
+      return 'default.jpg'
+    end
   end
 end
