@@ -13,7 +13,6 @@ class SearchController < ApplicationController
       search_results: items['Items']['TotalResults'],
       items: []
     }
-
     items['Items']['Item'].each.with_index(1) do |item, i|
       if item['CustomerReviews']['HasReviews'] == 'true'
         results[:items] << {

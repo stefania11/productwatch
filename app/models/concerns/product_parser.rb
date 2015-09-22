@@ -12,8 +12,8 @@ module ProductParser
       :operation     => 'ItemSearch',
       :keywords      => keyword,
       :search_index  => 'All',
-      :ResponseGroup => 'Large',
-      :TruncateReviewsAt => 0
+      :ResponseGroup => 'Small,Images,Reviews',
+      :ItemPage      => 1
     }
     request
   end
