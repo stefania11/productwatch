@@ -15,6 +15,8 @@ module ProductParser
     end
   end
 
+  private
+
   def self.build_product_request(query)
     # initialize sucker gem
     request = Sucker.new(
