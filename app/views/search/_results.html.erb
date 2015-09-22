@@ -2,7 +2,7 @@
   <div class="row">
   <h1>Total Search Results: <%= @results[:search_results] %></h1><hr>
   <% @results[:items].each do |item| %>
-    <form method="post" action="/results">
+    <form method="get" action="/results">
       <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
       <input type="hidden" name="item[id]" value="<%= item[:id] %>" >
       <input type="hidden" name="item[title]" value="<%= item[:title] %>" >
