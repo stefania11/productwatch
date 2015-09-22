@@ -2,7 +2,7 @@
   <h1>Product Tracker</h1>
   <div class="items-search">
     <%= form_tag('/search', method: "get") do %>
-    <%= label_tag(:q, "Search for  product review") %><br>
+    <%= label_tag(:q, "Search for product review") %><br>
     <%= text_field_tag(:q) %>
     <%= submit_tag("Search") %>
     <% end %>
