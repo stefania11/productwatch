@@ -11,26 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150918182722) do
+ActiveRecord::Schema.define(version: 20150922174632) do
+
+  create_table "authors", force: :cascade do |t|
+    t.string "url"
+    t.string "location"
+  end
 
   create_table "products", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "user_id"
+    t.string   "title"
+    t.string   "product_id"
+    t.string   "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "products", ["user_id"], name: "index_products_on_user_id"
-
   create_table "reviews", force: :cascade do |t|
-    t.text    "data"
-    t.integer "search_id"
+    t.string  "title"
+    t.text    "content"
+    t.string  "rating"
+    t.date    "date"
+    t.string  "votes"
+    t.string  "author"
+    t.integer "product_id"
+    t.integer "author_id"
   end
 
-  add_index "reviews", ["search_id"], name: "index_reviews_on_search_id"
-
-  create_table "searches", force: :cascade do |t|
-    t.string "query"
-  end
+  add_index "reviews", ["author_id"], name: "index_reviews_on_author_id"
+  add_index "reviews", ["product_id"], name: "index_reviews_on_product_id"
 
 end

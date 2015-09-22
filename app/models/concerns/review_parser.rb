@@ -16,6 +16,7 @@ module ReviewParser
       page.css('div.reviews div.review').map do |r|
         sentiment_data = SentimentAnalyzer.sentiment_data(r.css('span.review-text').text)
         author_url = BASE_URL + html_path_from_nokogiri(r,'a.author')
+        # create object and shovel in the array instead
         review_array << {
           id: r['id'],
           date: r.css('span.review-date').text.scan(/[^on]/).join('').strip,
