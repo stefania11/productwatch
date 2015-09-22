@@ -16,7 +16,7 @@ module SentimentAnalyzer
     sentences_hash = {}
     sentences = text.split(/\. |! /)
     sentences.each do |sentence|
-      sentences_hash[sentence]=analyzer.get_score(sentence) 
+      sentences_hash[sentence]=analyzer.get_score(sentence)
     end
     sentences_hash
   end
@@ -37,7 +37,7 @@ module SentimentAnalyzer
 
     high[0] = high[0] + "." unless high[0][-1,1] == '.' || high[0][-1,1] == '!'
     low[0] = low[0] + "." unless low[0][-1,1] == '.' || high[0][-1,1] == '!'
-                                                        
+
     {
       high: high[0],
       low: low[0],
@@ -45,6 +45,6 @@ module SentimentAnalyzer
     }
 
   end
-  
+
 
 end

@@ -1,10 +1,8 @@
-require 'AWSProductParser'
-require 'AWSReviewParser'
 class SearchController < ApplicationController
 
   def index
-    request = AWSProductParser.build_product_request(params[:q])
-    items = AWSProductParser.get_product_response(request)
+    request = ProductParser.build_product_request(params[:q])
+    items = ProductParser.get_product_response(request)
     @results = build_results_hash(items)
   end
 
@@ -21,8 +19,8 @@ class SearchController < ApplicationController
         results[:items] << {
           id: item['ASIN'],
           title: item['ItemAttributes']['Title'],
-          image_url: item['MediumImage']['URL'],
-          reviews: AWSReviewParser.parse_reviews(item['ASIN'])
+          image_url: item['LargeImage']['URL'],
+          reviews: ReviewParser.parse_reviews(item['ASIN'])
         }
         break if i >= 1
       end

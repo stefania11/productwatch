@@ -1,12 +1,12 @@
 require 'nokogiri'
 require 'open-uri'
 
-class AWSReviewParser
-  include ::SentimentAnalyzer
+module ReviewParser
+  include SentimentAnalyzer
+  include ProfileParser
 
   BASE_URL = "http://www.amazon.com"
   NUMBER_OF_PAGES = 3
-
 
   def self.parse_reviews(item_id)
     review_array = []
@@ -15,6 +15,7 @@ class AWSReviewParser
       page = Nokogiri::HTML(open(url))
       page.css('div.reviews div.review').map do |r|
         sentiment_data = SentimentAnalyzer.sentiment_data(r.css('span.review-text').text)
+        author_url = BASE_URL + html_path_from_nokogiri(r,'a.author')
         review_array << {
           id: r['id'],
           date: r.css('span.review-date').text.scan(/[^on]/).join('').strip,
@@ -23,7 +24,8 @@ class AWSReviewParser
           author: r.css('a.author').text,
           title: r.css('a.review-title').text,
           content: r.css('span.review-text').text,
-          author_url: BASE_URL + html_path_from_nokogiri(r,'a.author'),
+          author_url: author_url,
+          author_location: ProfileParser.get_author_location(author_url),
           review_url: BASE_URL + html_path_from_nokogiri(r,'a.review-title'),
           low_sentence: sentiment_data[:low],
           high_sentence: sentiment_data[:high],
@@ -35,7 +37,7 @@ class AWSReviewParser
   end
 
   private
-  
+
   def self.html_path_from_nokogiri(r,tag)
     if r.css(tag).first
       return r.css(tag).first['href']
@@ -43,5 +45,5 @@ class AWSReviewParser
       return "/"
     end
   end
-  
+
 end

@@ -1,4 +1,4 @@
-class AWSProductParser
+module ProductParser
   def self.build_product_request(keyword)
     # initialize sucker gem
     request = Sucker.new(
