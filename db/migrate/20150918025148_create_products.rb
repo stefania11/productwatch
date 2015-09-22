@@ -1,8 +1,9 @@
 class CreateProducts < ActiveRecord::Migration
   def change
     create_table :products do |t|
-      t.string :name
-      t.integer :user_id, index: true
+      t.string :title
+      t.string :product_id
+      t.string :image_url
 
       t.timestamps null: false
     end
