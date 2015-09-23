@@ -1,16 +1,14 @@
 class ProductsController < ApplicationController
   def index
-    #show a list of products w/o reviews
     @products = ProductParser.call(params[:q])
   end
 
   def show
-    #shows the review based on what the user clicks
     @product = Product.find(params[:id])
     @reviews = ReviewParser.call(@product.asin, @product.id)
-    @dashboard = dashboard_text
+    @map_data = build_map_data
     binding.pry
-    @product.reviews.author.location
+    @dashboard = dashboard_text
   end
 
   private
@@ -34,6 +32,18 @@ class ProductsController < ApplicationController
       best_review: best_review.content,
       worst_review: worst_review.content
     }
+  end
+
+  def build_map_data
+    h = Hash.new(0)
+    @reviews.each do |review|
+      # h[review.author.location] = average
+      review.author.map do |author|
+        review.rating.first.to_i
+      end
+      # h[review.author.location].map { |k, v| k,v.to_s }
+      # h[review.author.location] = h[review.author.location].reduce(:+)
+    end
   end
 
   def item_params
