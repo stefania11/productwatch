@@ -1,3 +1,4 @@
+require 'pry'
 class SearchController < ApplicationController
 
   def index
@@ -9,12 +10,14 @@ class SearchController < ApplicationController
     #shows the review based on what the user clicks
     @product = Product.find(params[:product][:id])
     @reviews = ReviewParser.call(@product.asin, @product.id)
-    @dasbhoard = dashboard_text
+    @dashboard = dashboard_text
+
   end
 
   private
 
   def dashboard_text
+
     best_sentence = @product.reviews.first
     worst_sentence = @product.reviews.first
     best_review = @product.reviews.first
@@ -27,7 +30,7 @@ class SearchController < ApplicationController
       worst_review = review if review.overall_score < worst_review.overall_score
     end
 
-    {
+    return {
       best_sentence: best_sentence.high_sentence,
       worst_sentence: worst_sentence.low_sentence,
       best_review: best_review.content,
