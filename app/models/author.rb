@@ -1,3 +1,3 @@
 class Author < ActiveRecord::Base
-  belongs_to :product, through: :reviews
+  has_many :reviews, dependent: :destroy
 end
