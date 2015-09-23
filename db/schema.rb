@@ -14,27 +14,37 @@
 ActiveRecord::Schema.define(version: 20150922174632) do
 
   create_table "authors", force: :cascade do |t|
-    t.string "url"
-    t.string "location"
+    t.string   "name"
+    t.string   "url"
+    t.string   "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
     t.string   "title"
-    t.string   "product_id"
+    t.string   "asin"
     t.string   "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string  "title"
-    t.text    "content"
-    t.string  "rating"
-    t.date    "date"
-    t.string  "votes"
-    t.string  "author"
-    t.integer "product_id"
-    t.integer "author_id"
+    t.string   "title"
+    t.text     "content"
+    t.string   "rating"
+    t.date     "date"
+    t.string   "votes"
+    t.string   "low_sentence"
+    t.float    "low_score"
+    t.string   "high_sentence"
+    t.float    "high_score"
+    t.string   "overall_sentiment"
+    t.float    "overall_score"
+    t.integer  "product_id"
+    t.integer  "author_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   add_index "reviews", ["author_id"], name: "index_reviews_on_author_id"

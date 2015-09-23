@@ -8,20 +8,9 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<%= render 'header' %>
+
 <body>
-<script>
-//     $(document).ready(function(){
-//       if ($(".overall p").attr('data-overall') == "positive" ){
-//         debugger;
-//
-//         $(".negative-review").show();
-//       } else {
-//         $(".positive-review").show();
-//       }
-//     });
-</script>
-
-<%= yield %>
-
+  <%= yield %>
 </body>
 </html>

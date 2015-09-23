@@ -14,7 +14,7 @@ module SentimentAnalyzer
     analyzer = Sentimental.new
     analyzer.get_score(text)
   end
-  
+
   def self.sentiment_of_sentences(text)
     analyzer = Sentimental.new
     sentences_hash = {}
@@ -46,7 +46,7 @@ module SentimentAnalyzer
       high: high[0],
       high_score: high[1],
       low: low[0],
-      low_score: low[0],
+      low_score: low[1],
       overall: overall_sentiment(text).to_s + ".",
       overall_score: overall_score(text)
     }
