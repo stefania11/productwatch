@@ -5,7 +5,7 @@ module ProductParser
     list_of_products.map do |product|
       if product['CustomerReviews']['HasReviews'] == 'true'
         p = Product.new
-        p.id = product['ASIN']
+        p.asin = product['ASIN']
         p.title = product['ItemAttributes']['Title']
         p.image_url = get_image(product)
         p.save
