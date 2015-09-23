@@ -1,5 +1,15 @@
 $body-bg: #2ecc71;
 @import 'bootstrap';
 
+.row .panel {
+height:300px;
+overflow:hidden;
+}
+
+img.img-rounded {
+max-height:300px;
+max-width:300px;
+}
+
 
 
