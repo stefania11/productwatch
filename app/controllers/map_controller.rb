@@ -1,6 +1,6 @@
 class MapController < ApplicationController
 respond_to :html, :js
-  def index
+  def map
     # request = AWSProductParser.build_product_request(params[:q])
     # items = AWSProductParser.get_product_response(request)
     # @results = build_results_hash(items)
