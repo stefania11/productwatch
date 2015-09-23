@@ -161,15 +161,11 @@ require_relative 'elections.json'
     // Get the ID of the path we are currently working with
     // Our SVG uses the state abbreviation for the ID
       var abbr = this.id;
-
     // Loop through the state data looking for
     // a match for that abbreviation
     // Then returning the corresponding president
     // who won that state, from the array we made earlier
     $.each(state_data, function(key, data){
-      if(var map_data == abbr){
-        state_review = data.review.author_location;
-      }
     })
 
     // Return colors

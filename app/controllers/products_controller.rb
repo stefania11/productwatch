@@ -7,7 +7,6 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @reviews = ReviewParser.call(@product.asin, @product.id)
     @map_data = build_map_data
-    binding.pry
     @dashboard = dashboard_text
   end
 
@@ -36,14 +35,8 @@ class ProductsController < ApplicationController
 
   def build_map_data
     h = Hash.new(0)
-    @reviews.each do |review|
-      # h[review.author.location] = average
-      review.author.map do |author|
-        review.rating.first.to_i
-      end
-      # h[review.author.location].map { |k, v| k,v.to_s }
-      # h[review.author.location] = h[review.author.location].reduce(:+)
-    end
+    @reviews.each { |r| h[r.author.location] += r.rating.first.to_f }
+    h.each { |k, v| h[k] = v / 30 }
   end
 
   def item_params
