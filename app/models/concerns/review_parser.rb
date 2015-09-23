@@ -22,7 +22,7 @@ module ReviewParser
           @r.content = r.css('span.review-text').text
           @r.rating = r.css('i.review-rating').text
           @r.date = r.css('span.review-date').text.to_date
-          @r.votes =  r.css('span.review-votes').text
+          @r.votes = r.css('span.review-votes').text
           @r.low_sentence = sentiment_data[:low]
           @r.low_score = sentiment_data[:low_score]
           @r.high_sentence = sentiment_data[:high]
