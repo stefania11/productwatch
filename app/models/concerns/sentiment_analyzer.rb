@@ -48,7 +48,7 @@ module SentimentAnalyzer
       low: low[0],
       low_score: low[0],
       overall: overall_sentiment(text).to_s + ".",
-      overall_score: get_score
+      overall_score: overall_score(text)
     }
 
   end
