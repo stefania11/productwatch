@@ -2,15 +2,19 @@ module ProductParser
   def self.call(query)
     products = self.get_product_data(query)
     list_of_products = products['ItemSearchResponse']['Items']['Item']
-    list_of_products.map do |product|
-      if product['CustomerReviews']['HasReviews'] == 'true'
-        p = Product.new
-        p.asin = product['ASIN']
-        p.title = product['ItemAttributes']['Title']
-        p.image_url = get_image(product)
-        p.save
-        p
+    if list_of_products
+      list_of_products.map do |product|
+        if product['CustomerReviews']['HasReviews'] == 'true'
+          p = Product.new
+          p.asin = product['ASIN']
+          p.title = product['ItemAttributes']['Title']
+          p.image_url = get_image(product)
+          p.save
+          p
+        end
       end
+    else
+      []
     end
   end
 

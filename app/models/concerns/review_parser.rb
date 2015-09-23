@@ -31,11 +31,11 @@ module ReviewParser
           @r.overall_score = sentiment_data[:overall_score]
           @r.product_id = product_db_id
           @r.save
-          @r.create_author(
-            name: r.css('a.author').text,
-            url: author_url,
-            location: ProfileParser.get_author_location(author_url)
-          )
+          #@r.create_author(
+            #name: r.css('a.author').text,
+            #url: author_url,
+            #location: ProfileParser.get_author_location(author_url)
+          #)
           @r
       end
     end
