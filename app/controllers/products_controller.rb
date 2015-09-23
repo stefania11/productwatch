@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @reviews = ReviewParser.call(@product.asin, @product.id)
     @dashboard = dashboard_text
+    binding.pry
     @product.reviews.author.location
   end
 

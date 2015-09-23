@@ -36,6 +36,7 @@ module ReviewParser
             url: author_url,
             location: ProfileParser.get_author_location(author_url)
           )
+          @r.save
           @r
       end
     end
