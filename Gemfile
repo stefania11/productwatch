@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.2.2'
 
+#font gem
+gem 'font-awesome-rails'
 # include .env files
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'responders', '~> 2.0'
