@@ -32,7 +32,7 @@
 	</div>
       </div>
       <div class="col-md-3">
-	<div class="panel panel-danger">	  
+	<div class="panel panel-danger">
 	  <div class="panel-heading panel-title">Worst Review</div>
 	  <div class="panel-body"><%= @dashboard[:worst_review]%></div>
 	</div>
@@ -49,6 +49,7 @@
 
 <div class="panel panel-default">
   <div class="panel-heading panel-title">Rating Over Time</div>
-  <div id="graph1" class="panel-body row-centered">
-  </div>
+    <div id="graph" class="panel-body row-centered">
+      <%= render 'graph' %>
+    </div>
 </div>
