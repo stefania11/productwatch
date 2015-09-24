@@ -1,9 +1,33 @@
-var urls = []
+<script>
+
+
 $(document).ready(function(){
-	debugger;
-}
+	var urls_from_html = $('#author_urls').text().split(' ');
+	var ids_from_html = $('#review_ids').text().split(' ');
+	urls_from_html.pop();
+	ids_from_html.pop();
 
-$.("user-data-button").click(function(){
-	
 
-})
+	$('#user-data-button').click(function(){
+		$.ajax({
+			'url': '/author-data',
+			'type':	'POST',
+			'data': {
+			    	'urls' : urls_from_html,
+				'ids' : ids_from_html
+			    }
+			 
+			}).always(function(data) {
+			if (data.status == 500) {
+			   $('#user-data-panel').html("fuck amazon, seriously") }
+			   else {
+			   $('#user-data-panel').html("success") }
+			   
+			});				
+	});
+
+
+});
+
+
+</script>
