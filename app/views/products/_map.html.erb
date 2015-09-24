@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
@@ -201,31 +195,19 @@
     // Our SVG uses the state abbreviation for the ID
       var abbr = this.id;
       var state_review = 0;
-
-
     // Loop through the state data looking for
     // a match for that abbreviation
     // Then returning the corresponding product rating
     // from the array we made earlier
-    $.each(map_data, function(key, data){
-      if(data.state_abbr == abbr){
-        console.log(`matched at ${abbr}`)
-        state_review = data.rating;
-        console.log(`rating is ${state_review}`)
-
-        if(state_review <= 1){
-          // debugger;
+      $.each(map_data, function(key, data){
+        if(data.state_abbr == abbr){
+          console.log(`matched at ${abbr}`);
+          state_review = data.rating;
+          console.log(`rating is ${state_review}`);
           $(`#${abbr}`).css('fill', `rgba(255,0,0,${state_review})`);
-        } else if (state_review <= 1){
-          $(`#${abbr}`).css('fill', 'red');
-        } else {
-          $(`#${abbr}`).css('fill', 'blue');
         }
-      }
-    })
+      });
     });
 
-  </script>
 
-  </body>
-</html>
+  </script>

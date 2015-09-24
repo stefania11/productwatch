@@ -51,7 +51,6 @@ class ProductsController < ApplicationController
     end
     rating_hash.each { |k, v| rating_hash[k] = (v / count_hash[k]) / 5 }
     return rating_hash
-
   end
 
   def item_params
