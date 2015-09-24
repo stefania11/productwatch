@@ -7,18 +7,21 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @reviews = ReviewParser.call(@product.asin, @product.id)
     # @reviews = []
-    @map_data = build_map_data
-    # @map_data = {
-    #   AL: 0.3333333333333333,
-    #   AR: 0.56666666666666666,
-    #   CO: 1.16666666666666666,
-    #   IN: 1.03333333333333333,
-    #   NY: 0.76666666666666666,
-    #   LA: 0.90,
-    #   CT: 0.600,
-    #   DE: 0.500
-    # }
+    # @map_data = build_map_data
+    @map_data = {
+      AL: 0.333333333333333,
+      AR: 0.56666666666666666,
+      CO: 1.16666666666666666,
+      IN: 1.03333333333333333,
+      NY: 0.76666666666666666,
+      LA: 0.90,
+      CT: 0.600,
+      DE: 0.500
+    }
     @dashboard = dashboard_text
+  end
+
+  def author_data
   end
 
   private

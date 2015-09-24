@@ -1,2 +1,32 @@
 $body-bg: #2ecc71;
 @import 'bootstrap';
+
+.row .panel {
+height:300px;
+overflow:hidden;
+}
+
+img.img-rounded {
+max-height:200px;
+max-width:300px;
+}
+
+.panel-body {
+font-size:12px;
+}
+
+.row-centered {
+text-align:center;
+}
+
+.col-centered {
+display:inline-block;
+float:none;
+text-align:left;
+margin-right:-4px;
+}
+
+.author_url {
+display:none;
+}
+
