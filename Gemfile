@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.2.2'
 
+#font gem
+gem 'font-awesome-rails'
 # include .env files
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'responders', '~> 2.0'
@@ -9,7 +11,9 @@ gem 'responders', '~> 2.0'
 gem 'vacuum'
 # Sentiment analysis gem
 gem 'sentimental'
-
+# charts
+gem 'lazy_high_charts'
+# scraping
 gem 'nokogiri'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
