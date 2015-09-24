@@ -10,6 +10,9 @@ class ProductsController < ApplicationController
     @dashboard = dashboard_text
   end
 
+  def author_data
+  end
+
   private
 
   def dashboard_text

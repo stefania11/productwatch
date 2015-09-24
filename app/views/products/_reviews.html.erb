@@ -5,9 +5,9 @@
     
     <h4><%= i %>) <%= review.title %></h4>
     <p>Rating: <%= review.rating %></p>
-    <p>Author: <%= review.author.name %></p>
-    <p>Location: <%= review.author.location %></p>
     <p>Usefulness: <%= review.votes %></p>
+    <p>Author: <%= review.author_name %></p>
+    <div class="author_url"><%= review.author_url %></div>
     <p>Published: <%= review.date %></p>
     <hr>
     <% if review.overall_sentiment == "negative." %>
