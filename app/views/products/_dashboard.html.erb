@@ -1,3 +1,6 @@
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <div class="row">
   <div class="col-lg-3"><img class="img-rounded" src="<%= @product.image_url %>"></div>
   <div class="col-lg-8"><h2><%= @product.title %></h2></div>
@@ -52,9 +55,18 @@
   <div id="graph1" class="panel-body row-centered">
   </div>
 </div>
+
 <div class="panel panel-default">
   <div class="panel-heading panel-title">Map Place Holder</div>
   <div id="graph1" class="panel-body row-centered">
     <%= render 'map' %>
+  </div>
+  <div class="panel-body">
+    <script>
+      $(function() {
+        $( "#slider" ).slider();
+      });
+    </script>
+    <div id="slider"></div>
   </div>
 </div>
