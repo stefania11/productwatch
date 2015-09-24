@@ -30,6 +30,8 @@ module ReviewParser
           @r.overall_sentiment = sentiment_data[:overall]
           @r.overall_score = sentiment_data[:overall_score]
           @r.product_id = product_db_id
+          @r.author_url = author_url
+          @r.author_name = r.css('a.author').text
           @r.save
           #@r.create_author(
             #name: r.css('a.author').text,

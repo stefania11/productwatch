@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 20150922174632) do
     t.float    "high_score"
     t.string   "overall_sentiment"
     t.float    "overall_score"
+    t.string   "author_url"
+    t.string   "author_name"
     t.integer  "product_id"
     t.integer  "author_id"
     t.datetime "created_at",        null: false

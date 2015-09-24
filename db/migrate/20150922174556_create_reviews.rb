@@ -12,6 +12,8 @@ class CreateReviews < ActiveRecord::Migration
       t.float  :high_score
       t.string :overall_sentiment
       t.float  :overall_score
+      t.string :author_url
+      t.string :author_name
       t.belongs_to :product, index: true, foreign_key: true
       t.belongs_to :author, index: true, foreign_key: true
 
