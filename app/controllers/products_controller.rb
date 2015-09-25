@@ -22,6 +22,10 @@ class ProductsController < ApplicationController
     # chart stuff
     @chart_data = Product.get_chart_data(@reviews)
     @chart = Product.create_chart(@chart_data)
+    @chart_sentiment_data = Product.get_sentiment_chart_data(@reviews)
+    @chart_sentiment = Product.create_sentiment_chart(@chart_sentiment_data)
+    @chart_sentiment_pie = Product.create_sentiment_pie_chart(@chart_sentiment_data)
+
   end
 
   def author_data

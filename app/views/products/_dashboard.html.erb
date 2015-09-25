@@ -58,6 +58,21 @@
 </div>
 
 <div class="panel panel-default">
+  <div class="panel-heading panel-title">Sentiment comparison</div>
+    <div id="graph" class="panel-body">
+      <div class="row">
+        <div class="col-md-6">
+          <%= render 'graph_sentiment' %>
+        </div>
+        <div class="col-md-6">
+          <%= render 'graph_sentiment_pie' %>
+        </div>
+      </div>
+</div>
+
+
+
+<div class="panel panel-default">
   <div class="panel-heading panel-title">Map Place Holder</div>
   <div id="graph1" class="panel-body row-centered">
     <%= render 'map' %>
