@@ -19,6 +19,20 @@
 </div>
 
 <div class="panel panel-default">
+  <div class="panel-heading panel-title">User Map</div>
+  <div id="graph1" class="panel-body row-centered" style="display:none;">
+    <%= render 'map' %>
+    <script>
+      $(function() {
+        $( "#slider" ).slider();
+      });
+    </script>
+    <div id="slider"></div>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
   <div class="panel-heading panel-title">Sentiment Review Data</div>
   <div class="panel-body">
     <div class="row">
@@ -55,22 +69,4 @@
     <div id="graph" class="panel-body row-centered">
       <%= render 'graph' %>
     </div>
-</div>
-
-<div class="panel panel-default">
-  <div class="panel-heading panel-title">Map Place Holder</div>
-  <div id="graph1" class="panel-body row-centered">
-    <%= render 'map' %>
-  </div>
-  <div class="panel-body">
-    <script>
-      $(function() {
-        $( "#slider" ).slider({
-          change: function( event, ui ) {debugger;}
-        });
-
-      });
-    </script>
-    <div id="slider"></div>
-  </div>
 </div>

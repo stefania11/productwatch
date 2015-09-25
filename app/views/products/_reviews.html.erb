@@ -7,7 +7,6 @@
     <p>Rating: <%= review.rating %></p>
     <p>Usefulness: <%= review.votes %></p>
     <p>Author: <%= review.author_name %></p>
-    <div class="author_url"><%= review.author_url %></div>
     <p>Published: <%= review.date %></p>
     <hr>
     <% if review.overall_sentiment == "negative." %>
@@ -26,3 +25,5 @@
 </div>
 </div>
 </div>
+<div id="author_urls"><% @reviews.each do |review| %><%= review.author_url + " " %><% end %></div>
+<div id="review_ids"><% @reviews.each do |review| %><%= review.id.to_s + " " %><% end %></div>
