@@ -23,25 +23,25 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-md-3">
-	<div class="panel panel-success">
+	<div class="panel panel-primary">
 	  <div class="panel-heading panel-title">Best Review</div>
 	  <div class="panel-body"><%= @dashboard[:best_review]%></div>
 	</div>
       </div>
       <div class="col-md-3">
-	<div class="panel panel-success">
+	<div class="panel panel-primary">
 	  <div class="panel-heading panel-title">Best Sentence</div>
 	  <div class="panel-body"><%= @dashboard[:best_sentence]%></div>
 	</div>
       </div>
       <div class="col-md-3">
-	<div class="panel panel-danger">
+	<div class="panel panel-warning">
 	  <div class="panel-heading panel-title">Worst Review</div>
 	  <div class="panel-body"><%= @dashboard[:worst_review]%></div>
 	</div>
       </div>
       <div class="col-md-3">
-	<div class="panel panel-danger">
+	<div class="panel panel-warning">
 	  <div class="panel-heading panel-title">Worst Sentence</div>
 	  <div class="panel-body"><%= @dashboard[:worst_sentence]%></div>
 	</div>
@@ -65,7 +65,10 @@
   <div class="panel-body">
     <script>
       $(function() {
-        $( "#slider" ).slider();
+        $( "#slider" ).slider({
+          change: function( event, ui ) {debugger;}
+        });
+
       });
     </script>
     <div id="slider"></div>
