@@ -1,6 +1,7 @@
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 <div class="row">
   <div class="col-lg-3"><img class="img-rounded" src="<%= @product.image_url %>"></div>
   <div class="col-lg-8"><h2><%= @product.title %></h2></div>
@@ -17,6 +18,20 @@
     </div>
   </div>
 </div>
+
+<!-- <div class="panel panel-default">
+  <div class="panel-heading panel-title">User Map</div>
+  <div id="graph1" class="panel-body row-centered" style="display:none;">
+    <%# render 'map' %>
+    <script>
+      $(function() {
+        $( "#slider" ).slider();
+      });
+    </script>
+    <div id="slider"></div>
+  </div>
+</div> -->
+
 
 <div class="panel panel-default">
   <div class="panel-heading panel-title">Sentiment Review Data</div>
@@ -55,6 +70,19 @@
     <div id="graph" class="panel-body row-centered">
       <%= render 'graph' %>
     </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading panel-title">Sentiment comparison</div>
+    <div id="graph" class="panel-body">
+      <div class="row">
+        <div class="col-md-6">
+          <%= render 'graph_sentiment' %>
+        </div>
+        <div class="col-md-6">
+          <%= render 'graph_sentiment_pie' %>
+        </div>
+      </div>
 </div>
 
 <div class="panel panel-default">

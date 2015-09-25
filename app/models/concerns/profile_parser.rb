@@ -56,19 +56,25 @@ module ProfileParser
   	'Wyoming' => 'WY'
   }
 
-  def self.get_author_location(author_url)
+  def self.get_author_location_and_name(author_url)
     page = Nokogiri::HTML(open(author_url, 'User-Agent' => 'chrome'))
     raw_location = page.css('div.profile-info .a-row.a-spacing-micro span.a-size-small.a-color-secondary').text.upcase
-    if raw_location != ''
-      state_short = LOCATION_HASH.values.select { |state| state if raw_location.include?(state) }
-      state_full = LOCATION_HASH.keys.select { |state| state if raw_location.include?(state.upcase) }
-      case
+    name = page.css('div.profile-details-column div.a-section').text
+
+      location =   
+      if raw_location != ''
+        state_short = LOCATION_HASH.values.select { |state| state if raw_location.include?(state) }
+        state_full = LOCATION_HASH.keys.select { |state| state if raw_location.include?(state.upcase) }
+        case
         when !state_short.empty? then location = state_short.first
         when !state_full.empty? then location = LOCATION_HASH[state_full.first]
         else location = 'Not Specified'
+        end
+      else
+        location = 'Not Specified'
       end
-    else
-      location = 'Not Specified'
-    end
+    
+    return [location,name]
+    
   end
 end

@@ -9,11 +9,11 @@ class ProductsController < ApplicationController
     @dashboard = Product.dashboard_text(@product)
     @chart_data = Product.get_chart_data(@product.reviews)
     @chart = Product.create_chart(@chart_data)
-  end
+    @chart_sentiment_data = Product.get_sentiment_chart_data(@reviews)
+    @chart_sentiment = Product.create_sentiment_chart(@chart_sentiment_data)
+    @chart_sentiment_pie = Product.create_sentiment_pie_chart(@chart_sentiment_data)
 
-  def author_data
   end
-
   private
 
   def product_params
