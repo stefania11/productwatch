@@ -31,4 +31,37 @@ class Product < ActiveRecord::Base
       f.legend(align: 'right', verticalAlign: 'top', y: 75, x: -50, layout: 'vertical')
     end
   end
+
+  def self.dashboard_text(product)
+    best_sentence = product.reviews.first
+    worst_sentence = product.reviews.first
+    best_review = product.reviews.first
+    worst_review = product.reviews.first
+
+    product.reviews.each do |review|
+      best_sentence = review if review.high_score > best_sentence.high_score
+      worst_sentence = review if review.low_score < worst_sentence.low_score
+      best_review = review if review.overall_score > best_review.overall_score
+      worst_review = review if review.overall_score < worst_review.overall_score
+    end
+
+    return {
+      best_sentence: best_sentence.high_sentence,
+      worst_sentence: worst_sentence.low_sentence,
+      best_review: best_review.content,
+      worst_review: worst_review.content
+    }
+  end
+
+  def self.build_map_data(reviews)
+    rating_hash = Hash.new(0)
+    count_hash = Hash.new(0)
+
+    reviews.each do |review|
+      rating_hash[review.author.location] += review.rating.first.to_f
+      count_hash[review.author.location] += 1
+    end
+    rating_hash.each { |k, v| rating_hash[k] = (v / count_hash[k]) / 5 }
+    return rating_hash
+  end
 end

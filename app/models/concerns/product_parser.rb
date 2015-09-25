@@ -5,12 +5,12 @@ module ProductParser
     if list_of_products
       list_of_products.map do |product|
         if product['CustomerReviews']['HasReviews'] == 'true'
-          p = Product.new
-          p.asin = product['ASIN']
-          p.title = product['ItemAttributes']['Title']
-          p.image_url = get_image(product)
-          p.save
-          p
+          Product.new.tap do |p|
+            p.asin = product['ASIN']
+            p.title = product['ItemAttributes']['Title']
+            p.image_url = get_image(product)
+            p.save
+          end
         end
       end
     else
