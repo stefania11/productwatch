@@ -10,7 +10,7 @@
             <% end %>
             <div class="card-block product-description-text">
               <h5 class="card-title"><%= truncate(product.title, length: 35) %></h5>
-              <p class="card-subtitle text-muted"><%= product.product_group %> - $<%= product.price.round %></p>
+              <p class="card-subtitle text-muted"><%= product.product_group %> - <%= number_to_currency(product.price, precision: 0) %></p>
             </div>
           </div>
         </div>
