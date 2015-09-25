@@ -11,7 +11,9 @@ gem 'responders', '~> 2.0'
 gem 'vacuum'
 # Sentiment analysis gem
 gem 'sentimental'
-
+# charts
+gem 'lazy_high_charts'
+# scraping
 gem 'nokogiri'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
