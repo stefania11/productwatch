@@ -19,6 +19,20 @@
 </div>
 
 <div class="panel panel-default">
+  <div class="panel-heading panel-title">User Map</div>
+  <div id="graph1" class="panel-body row-centered" style="display:none;">
+    <%= render 'map' %>
+    <script>
+      $(function() {
+        $( "#slider" ).slider();
+      });
+    </script>
+    <div id="slider"></div>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
   <div class="panel-heading panel-title">Sentiment Review Data</div>
   <div class="panel-body">
     <div class="row">
@@ -69,8 +83,6 @@
         </div>
       </div>
 </div>
-
-
 
 <div class="panel panel-default">
   <div class="panel-heading panel-title">Map Place Holder</div>

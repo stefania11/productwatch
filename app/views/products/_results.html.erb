@@ -1,17 +1,20 @@
 <div class="container">
   <div class="row">
     <%= "Sorry, there were no results for your search!" if @products==[] %>
-    <% @products.each do |product| %>
-      <% if product %>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb" style="overflow:hidden;height:260px;min-width:300px;">
-          <%= link_to product do %>
-            <%= truncate(product.title, length: 55) %>
-            <%= image_tag(product.image_url, class: 'img-responsive') %>
-          <% end %>
+      <% @products.each do |product| %>
+        <% if product %>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+          <div class="card">
+            <%= link_to product do %>
+              <%= image_tag(product.image_url, class: 'img-responsive card-img-top') %>
+            <% end %>
+            <div class="card-block product-description-text">
+              <h5 class="card-title"><%= truncate(product.title, length: 35) %></h5>
+              <p class="card-subtitle text-muted"><%= product.product_group %> - $<%= product.price.round %></p>
+            </div>
+          </div>
         </div>
+        <% end %>
       <% end %>
-    <% end %>
   </div>
 </div>
-
-

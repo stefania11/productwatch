@@ -14,7 +14,9 @@
 ActiveRecord::Schema.define(version: 20150922174632) do
 
   create_table "authors", force: :cascade do |t|
+    t.string   "name"
     t.string   "location"
+    t.string   "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -23,8 +25,11 @@ ActiveRecord::Schema.define(version: 20150922174632) do
     t.string   "title"
     t.string   "asin"
     t.string   "image_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.float    "price"
+    t.string   "product_group"
+    t.string   "manufacturer"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "reviews", force: :cascade do |t|
