@@ -138,41 +138,22 @@
     </svg>
   </div>
 
-
   <script>
-    var  mapjson = <%= @map_data.to_json.html_safe %>
-    var map_data = [];
-    $.each(mapjson, function(key, value){
-    	// Grab the rating of every review for our @map_data hash
-    	var rating = value;
-    	// Grab the abbreviation of that location of the review author
-    	var state_abbreviation = key;
-    	// Create a JSON object containing the state abbreviation
-    	// and the name of the president who won that state
-    	var datarow = {"state_abbr": state_abbreviation,
-    		       "rating": rating};
-    	// Add that JSON object to our data
-    	map_data.push(datarow);
-    });
-  </script>
+    function buildMap(map_data) {
 
-  <script>
     var state = d3.selectAll('path').attr('fill', function(d){
-    // Get the ID of the path we are currently working with
-    // Our SVG uses the state abbreviation for the ID
+
       var abbr = this.id;
       var state_review = 0;
-    // Loop through the state data looking for
-    // a match for that abbreviation
-    // Then returning the corresponding product rating
-    // from the array we made earlier
+
       $.each(map_data, function(key, data){
-        if(data.state_abbr == abbr){
+        if(key == abbr){
           console.log(`matched at ${abbr}`);
-          state_review = data.rating;
+          state_review = data;
           console.log(`rating is ${state_review}`);
           $(`#${abbr}`).css('fill', `rgba(8,48,107,${state_review})`);
         }
       });
     });
+    }
   </script>

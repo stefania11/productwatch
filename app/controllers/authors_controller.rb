@@ -1,4 +1,7 @@
 class AuthorsController < ApplicationController
+
+  skip_before_action :verify_authenticity_token
+  
   def index
     map_data = authors_to_json(params)
     render :json => map_data
@@ -31,8 +34,8 @@ class AuthorsController < ApplicationController
         
       end
       map_datum = {
-        review_id: params["ids"][i],
-        location: info[:location]
+        rating: review.rating[0...2].to_f,
+        state_abbr: info[:location]
       }
       map_data << map_datum
       

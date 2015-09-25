@@ -1,6 +1,5 @@
 <script>
 
-
 $(document).ready(function(){
 	var urls_from_html = $('#author_urls').text().split(' ');
 	var ids_from_html = $('#review_ids').text().split(' ');
@@ -19,10 +18,37 @@ $(document).ready(function(){
 			 
 			}).always(function(data) {
 			if (data.status == 500) {
-			   $('#user-data-panel').html("fuck amazon, seriously") }
-			   else {
-			   $('#user-data-panel').html("success") }
+			   $('#user-data-panel').html("fuck amazon, seriously");
+			}
+			else {
+			   $('#user-data-panel').html("success");
 			   
+			   var rating_hash = {};
+			   var count_hash = {};
+
+			   data.forEach(function(obj) {
+			   	var state_abbr = obj.state_abbr;
+				var rating = obj.rating;
+
+			   	if (rating_hash[obj.state_abbr] == null) {
+			   	   rating_hash[state_abbr] = rating;
+			   	   count_hash[state_abbr] = 1;
+			   	   }
+			   	else {
+			   	   rating_hash[state_abbr] += rating;
+			   	   count_hash[state_abbr] += 1;
+			   	   }
+			   	})
+
+			   for (state_abbr in rating_hash) {
+			       if (rating_hash.hasOwnProperty(state_abbr)) {
+			       	  rating_hash[state_abbr] = (rating_hash[state_abbr] / count_hash[state_abbr]) / 5;  	  
+			       }
+			   }
+
+			   buildMap(rating_hash);
+			   $('#graph1').show();
+			   }			   
 			});				
 	});
 

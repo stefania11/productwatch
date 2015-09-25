@@ -6,20 +6,10 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @reviews = ReviewParser.call(@product.asin, @product.id)
-    # @map_data = build_map_data
-    # @map_data = {
-    #   AL: 0.333333333333333,
-    #   AR: 0.56666666666666666,
-    #   CO: 1.16666666666666666,
-    #   IN: 1.03333333333333333,
-    #   NY: 0.76666666666666666,
-    #   LA: 0.90,
-    #   CT: 0.600,
-    #   DE: 0.500
-    # }
+
     @dashboard = dashboard_text
 
-    # chart stuff
+    
     @chart_data = Product.get_chart_data(@reviews)
     @chart = Product.create_chart(@chart_data)
   end
