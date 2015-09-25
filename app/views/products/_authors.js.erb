@@ -1,6 +1,6 @@
 <script>
 
-$(document).ready(function(){
+var ready = function(){
 	var urls_from_html = $('#author_urls').text().split(' ');
 	var ids_from_html = $('#review_ids').text().split(' ');
 	urls_from_html.pop();
@@ -8,6 +8,7 @@ $(document).ready(function(){
 
 
 	$('#user-data-button').click(function(){
+		$('#user-data-panel').html('<%= image_tag "ajax-loader.gif" %>');
 		$.ajax({
 			'url': '/author-data',
 			'type':	'POST',
@@ -16,17 +17,17 @@ $(document).ready(function(){
 				'ids' : ids_from_html
 			    }
 			 
-			}).always(function(data) {
-			if (data.status == 500) {
-			   $('#user-data-panel').html("fuck amazon, seriously");
+			}).done(function(map_data) {
+			if (map_data.status == 500) {
+			   $('#user-data-panel').html("There was an error loading user data.");
 			}
 			else {
-			   $('#user-data-panel').html("success");
+			   $('#user-data-panel').html(map_data.length.toString() + " users were loaded.");
 			   
 			   var rating_hash = {};
 			   var count_hash = {};
 
-			   data.forEach(function(obj) {
+			   map_data.forEach(function(obj) {
 			   	var state_abbr = obj.state_abbr;
 				var rating = obj.rating;
 
@@ -53,7 +54,9 @@ $(document).ready(function(){
 	});
 
 
-});
+}
 
+$(document).ready(ready);
+$(document).on('page:load', ready);
 
 </script>
