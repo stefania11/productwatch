@@ -9,7 +9,8 @@
               <%= image_tag(product.image_url, class: 'img-responsive card-img-top') %>
             <% end %>
             <div class="card-block product-description-text">
-              <h5 class="card-subtitle text-muted"><%= truncate(product.title, length: 30) %></h5>
+              <h5 class="card-title"><%= truncate(product.title, length: 35) %></h5>
+              <p class="card-subtitle text-muted"><%= product.product_group %> - $<%= product.price.round %></p>
             </div>
           </div>
         </div>

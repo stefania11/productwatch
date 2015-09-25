@@ -9,6 +9,9 @@ module ProductParser
             p.asin = product['ASIN']
             p.title = product['ItemAttributes']['Title']
             p.image_url = get_image(product)
+            p.price = product['Offers']['Offer']['OfferListing']['Price']['FormattedPrice'].scan(/[^$,]/).join.to_f
+            p.product_group = product['ItemAttributes']['ProductGroup']
+            p.manufacturer = product['ItemAttributes']['Manufacturer']
             p.save
           end
         end
@@ -31,7 +34,7 @@ module ProductParser
       query: {
         'Keywords' => query,
         'SearchIndex' => 'All',
-        'ResponseGroup' => 'Small,Images,Reviews',
+        'ResponseGroup' => 'Small,Images,Reviews,Offers',
         'ItemPage'      => 1
       }
     )
