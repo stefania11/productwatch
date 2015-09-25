@@ -1,4 +1,4 @@
-module ProductParserOA
+module ProductParser
   def self.call(query)
     products = self.get_product_data(query)
     list_of_products = products['ItemSearchResponse']['Items']['Item']
