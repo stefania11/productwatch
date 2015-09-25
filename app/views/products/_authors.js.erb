@@ -22,7 +22,7 @@ var ready = function(){
 			   $('#user-data-panel').html("There was an error loading user data.");
 			}
 			else {
-			   $('#user-data-panel').html(map_data.length.toString() + " users were loaded.");
+			   
 			   
 			   var rating_hash = {};
 			   var count_hash = {};
@@ -49,7 +49,9 @@ var ready = function(){
 
 			   buildMap(rating_hash);
 			   $('#graph1').show();
-			   }			   
+			   }
+			   
+			   $('#user-data-panel').html(map_data.length.toString() + " users were loaded. " + (Object.keys(rating_hash).length-1).toString() + " listed their location. The average rating for the group that did not specify their location is " + (rating_hash["Not Specified"]*5).toString().substring(0,3) + ".");
 			});				
 	});
 
