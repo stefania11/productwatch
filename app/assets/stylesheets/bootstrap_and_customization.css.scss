@@ -38,19 +38,37 @@ display:none;
   margin-bottom: 20px;
 }
 
-.product-description-text {
-  padding: 5px 0 5px 10px;
-}
-
 .card img {
   width: 300px;
   height: 300px;
+}
+
+.product-description-text {
+  padding: 5px 0 5px 10px;
 }
 
 #review_ids {
 display:none;
 }
 
+input.home-search-input {
+  padding: 35px 40px 35px 15px;
+  font-size: 2.5em;
+  border-radius: 5px;
+}
 
+.home-search {
+  width: 50%;
+  height: 50%;
+  margin: 10% auto 0 auto;
+  text-align: center;
+}
 
+.home-jumbo-text h1 {
+  font-size: 3.5em;
+  font-weight: 300;
+}
 
+.home-jumbo-text {
+  margin-bottom: 50px;
+}
