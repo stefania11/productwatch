@@ -72,6 +72,8 @@ class Product < ActiveRecord::Base
       })
       f.legend(align: 'right', verticalAlign: 'top', y: 75, x: -50, layout: 'vertical')
     end
+  end
+
   def self.dashboard_text(product)
     best_sentence = product.reviews.first
     worst_sentence = product.reviews.first
