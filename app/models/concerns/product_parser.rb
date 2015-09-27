@@ -51,8 +51,12 @@ module ProductParser
 
   
   def self.get_price(product)
-    if product['Offers']['Offer']
-      return product['Offers']['Offer']['OfferListing']['Price']['FormattedPrice'].scan(/[^$,]/).join.to_f
+    if product['Offers']
+      if product['Offers']['Offer']
+        return product['Offers']['Offer']['OfferListing']['Price']['FormattedPrice'].scan(/[^$,]/).join.to_f
+      else
+        return 'n/a'
+      end
     else
       return 'n/a'
     end
