@@ -1,8 +1,11 @@
-<div class="home-search">
-  <div class="home-jumbo-text">
-    <h1>Discover the product reviews that matter to you</h1>
+<%= render 'header' %>
+<div class="container">
+  <div class="home-search">
+    <div class="home-jumbo-text">
+      <h1>Discover the product reviews that matter to you</h1>
+    </div>
+    <%= form_tag(products_path, method: 'get') do %>
+      <%= text_field_tag 'product[q]', nil, placeholder: 'Search', class: 'form-control input-lg home-search-input' %>
+    <% end %>
   </div>
-  <%= form_tag(products_path, method: 'get') do %>
-    <%= text_field_tag 'product[q]', nil, placeholder: 'Search', class: 'form-control input-lg home-search-input' %>
-  <% end %>
 </div>

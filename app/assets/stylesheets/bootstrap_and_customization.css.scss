@@ -1,54 +1,46 @@
-$body-bg: #2ecc71;
-@import 'bootstrap';
-
 .row .panel {
-height:300px;
-overflow:hidden;
-}
-
-img.img-rounded {
-max-height:200px;
-max-width:300px;
-}
-
-.panel-body {
-font-size:12px;
+  height: 400px;
+  overflow: scroll;
 }
 
 .row-centered {
-text-align:center;
+text-align: center;
 }
 
-.col-centered {
-display:inline-block;
-float:none;
-text-align:left;
-margin-right:-4px;
+#author_urls,
+#review_ids {
+  display: none;
 }
-
-#author_urls {
-display:none;
-}
-
 
 .card {
+  background: #ebebeb;
+  margin-bottom: 30px;
+  height: 440px;
   overflow: hidden;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
   border-radius: 5px;
-  background: #fafafa;
-  margin-bottom: 20px;
+  border: solid #ddd 1px;
+  -moz-box-shadow: 0 2px 0 0 #ccc;
+  -webkit-box-shadow: 0 2px 0 0 #ccc;
+  box-shadow: 0 2px 0 0 #ccc;
+}
+
+.card-image-container {
+  height: 350px;
+  overflow: hidden;
+  background: #fff;
 }
 
 .card img {
-  width: 300px;
-  height: 300px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  height: 100%;
 }
 
 .product-description-text {
-  padding: 5px 0 5px 10px;
-}
-
-#review_ids {
-display:none;
+  padding: 5px 10px 5px 10px;
 }
 
 input.home-search-input {
@@ -71,4 +63,8 @@ input.home-search-input {
 
 .home-jumbo-text {
   margin-bottom: 50px;
+}
+
+.page-wrapper {
+  padding-top: 80px;
 }

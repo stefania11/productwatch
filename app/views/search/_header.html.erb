@@ -5,10 +5,6 @@
         <!-- <img alt="Brand" src="..."> -->
         Product Tracker
       </a>
-      <%= form_tag(products_path, method: 'get', class: 'navbar-form navbar-left') do %>
-        <%= text_field_tag 'product[q]', nil, placeholder: 'Search for products', class: 'form-control' %>
-        <%= submit_tag 'Submit', class: 'btn btn-default' %>
-      <% end %>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#" class="navbar-link">About</a></li>

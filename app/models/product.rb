@@ -52,7 +52,7 @@ class Product < ActiveRecord::Base
       f.title(text: 'Sentiment analyzer for top 30 reviews')
       f.xAxis(categories: ["positive","negative"])
       f.yAxis(title: {text: 'Sentiment Count', margin: 50}, startOnTick: true, endOnTick: true)
-      f.series(name: 'Sentiment Count', data: [chart_data[:negative], chart_data[:positive]])
+      f.series(name: 'Sentiment Count', data: [chart_data[:positive], chart_data[:negative]])
       f.legend(align: 'right', verticalAlign: 'top', y: 75, x: -50, layout: 'vertical')
     end
   end
