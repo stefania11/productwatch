@@ -95,15 +95,4 @@ class Product < ActiveRecord::Base
     }
   end
 
-  def self.build_map_data(reviews)
-    rating_hash = Hash.new(0)
-    count_hash = Hash.new(0)
-
-    reviews.each do |review|
-      rating_hash[review.author.location] += review.rating.first.to_f
-      count_hash[review.author.location] += 1
-    end
-    rating_hash.each { |k, v| rating_hash[k] = (v / count_hash[k]) / 5 }
-    return rating_hash
-  end
 end
