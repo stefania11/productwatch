@@ -7,7 +7,7 @@ var ready = function(){
 	ids_from_html.pop();
 
 	$('#user-data-button').click(function(){
-		$('#user-data-panel').html('<div class="throbber-loader">Loading...</div><h5>Loading...</h5>');
+		$('#user-data-panel').html('<div class="throbber-loader">Loading...</div><h5>Loading reviewer locations...</h5>');
 		$.ajax({
 			'url': '/author-data',
 			'type':	'POST',
@@ -18,7 +18,7 @@ var ready = function(){
 
 			}).done(function(map_data) {
 			if (map_data.status == 500) {
-			   $('#user-data-panel').html("<h4>There was an error loading user data.</h4>");
+			   $('#user-data-panel').html("<h4>There was an error loading reviewer data.</h4>");
 			}
 			else {
 
@@ -50,7 +50,7 @@ var ready = function(){
 			   $('#graph1').slideDown();
 			   }
 
-			   $('#user-data-panel').html("<h4>" + map_data.length.toString() + " users were loaded. " + (Object.keys(rating_hash).length-1).toString() + " listed their location. The average rating for the group that did not specify their location is " + (rating_hash["Not Specified"]*5).toString().substring(0,3) + ".</h4>");
+			   $('#user-data-panel').html("<h4>" + map_data.length.toString() + " reviewers were loaded. " + (Object.keys(rating_hash).length-1).toString() + " listed their location. The average rating for the group that did not specify their location is " + (rating_hash["Not Specified"]*5).toString().substring(0,3) + ".</h4>");
 			});
 	});
 
