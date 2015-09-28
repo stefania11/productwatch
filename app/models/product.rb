@@ -38,7 +38,6 @@ class Product < ActiveRecord::Base
   def self.create_chart(chart_data)
     LazyHighCharts::HighChart.new('graph') do |f|
       f.chart(type: 'areaspline')
-      f.title(text: 'Average Rating Over Time')
       f.xAxis(categories: chart_data[:years])
       f.yAxis(title: {text: 'Rating', margin: 50}, startOnTick: true, endOnTick: true)
       f.series(name: 'Average Rating', data: chart_data[:ratings])
@@ -49,7 +48,6 @@ class Product < ActiveRecord::Base
   def self.create_sentiment_chart(chart_data)
     LazyHighCharts::HighChart.new('graph') do |f|
       f.chart(type: 'column')
-      f.title(text: 'Sentiment analyzer for top 30 reviews')
       f.xAxis(categories: ["positive","negative"])
       f.yAxis(title: {text: 'Sentiment Count', margin: 50}, startOnTick: true, endOnTick: true)
       f.series(name: 'Sentiment Count', data: [chart_data[:positive], chart_data[:negative]])
@@ -60,7 +58,6 @@ class Product < ActiveRecord::Base
   def self.create_sentiment_pie_chart(chart_data)
     LazyHighCharts::HighChart.new('graph') do |f|
       f.chart(type: 'pie')
-      f.title(text: 'Sentiment analyzer for top 30 reviews')
       f.plotOptions(pie: {dataLabels: {enabled: false}, showInLegend: true})
       f.series({
                :type=> 'pie',

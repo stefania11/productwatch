@@ -6,7 +6,7 @@ module ReviewParser
   include ProfileParser
 
   BASE_URL = "http://www.amazon.com"
-  NUMBER_OF_PAGES = 3
+  NUMBER_OF_PAGES = 5
 
   def self.call(product_asin, product_db_id)
     review_array = []
@@ -42,11 +42,10 @@ module ReviewParser
   private
 
   def self.html_path_from_nokogiri(r,tag)
-    if r.css(tag).first
-      return r.css(tag).first['href']
-    else
+    begin
+      r.css(tag).first['href']
+    rescue Exception
       return "/"
     end
   end
-
 end

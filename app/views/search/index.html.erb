@@ -5,7 +5,7 @@
       <h1>Discover the product reviews that matter to you</h1>
     </div>
     <%= form_tag(products_path, method: 'get') do %>
-      <%= text_field_tag 'product[q]', nil, placeholder: 'Search', class: 'form-control input-lg home-search-input' %>
+      <%= text_field_tag 'product[q]', nil, placeholder: 'Search for a product here', class: 'form-control input-lg home-search-input' %>
     <% end %>
   </div>
 </div>

@@ -1,17 +1,21 @@
 <div class="container">
   <div class="row">
-    <%= "Sorry, there were no results for your search!" if @products==[] %>
+    <% if @products==[] %>
+      <div class="error-message-container">
+        <h4><%= "Sorry, there were no results for your search!" %></h4>
+      </div>
+    <% end %>
       <% @products.each do |product| %>
         <% if product %>
         <div class="col-lg-3 col-md-4 col-xs-6">
           <div class="card">
-            <div class="card-image-container">
-              <%= link_to product do %>
+            <%= link_to product do %>
+              <div class="card-image-container">
                 <%= image_tag(product.image_url) %>
-              <% end %>
-            </div>
+              </div>
+            <% end %>
             <div class="card-block product-description-text">
-              <h5 class="card-title"><%= truncate(product.title, length: 55) %></h5>
+              <h4 class="card-title"><%= truncate(product.title, length: 40) %></h4>
               <p class="card-subtitle text-muted"><%= product.product_group %> - <%= number_to_currency(product.price, precision: 0) %></p>
             </div>
           </div>
