@@ -36,25 +36,25 @@
       <div class="col-md-3">
       	<div class="panel panel-primary">
       	  <div class="panel-heading panel-title">Best Review</div>
-      	  <div class="panel-body"><%= @dashboard[:best_review]%></div>
+      	  <div class="panel-body"><%= truncate(@dashboard[:best_review], length: 600) %></div>
       	</div>
       </div>
       <div class="col-md-3">
       	<div class="panel panel-primary">
       	  <div class="panel-heading panel-title">Best Sentence</div>
-      	  <div class="panel-body"><%= @dashboard[:best_sentence]%></div>
+      	  <div class="panel-body"><%= truncate(@dashboard[:best_sentence], length: 600) %></div>
       	</div>
       </div>
       <div class="col-md-3">
       	<div class="panel panel-warning">
       	  <div class="panel-heading panel-title">Worst Review</div>
-      	  <div class="panel-body"><%= @dashboard[:worst_review]%></div>
+      	  <div class="panel-body"><%= truncate(@dashboard[:worst_review], length: 600) %></div>
       	</div>
       </div>
       <div class="col-md-3">
       	<div class="panel panel-warning">
       	  <div class="panel-heading panel-title">Worst Sentence</div>
-      	  <div class="panel-body"><%= @dashboard[:worst_sentence]%></div>
+      	  <div class="panel-body"><%= truncate(@dashboard[:worst_sentence], length: 600) %></div>
       	</div>
       </div>
     </div>

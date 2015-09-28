@@ -9,7 +9,7 @@
 
 .row .panel .panel-body {
   max-height: 400px;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 .shadow {
@@ -100,4 +100,42 @@ input.home-search-input {
   left: 50%;
   transform: translate(-50%, 0);
   height: 100%;
+}
+
+/////// Begin Map Styling ////////
+
+.state {
+  fill:#F7FBFF;
+  stroke:#08306B;
+  stroke-width:1;
+  stroke-opacity:1;
+}
+
+.territory {
+  opacity:0;
+  fill:#F7FBFF;
+  stroke:#08306B;
+  stroke-width:1;
+  stroke-opacity:1;
+}
+
+.territoryborder {
+  opacity:0;
+  fill:none;
+  stroke:#A9A9A9;
+  stroke-width:2;
+}
+
+.border {
+  opacity:1;
+  fill:none;
+  stroke:#A9A9A9;
+  stroke-width:2;
+}
+
+.circle {
+   opacity:1;
+   fill:#F7FBFF;
+   stroke:#08306B;
+   stroke-width:1;
 }

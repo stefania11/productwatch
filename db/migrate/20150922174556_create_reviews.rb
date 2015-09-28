@@ -2,9 +2,10 @@ class CreateReviews < ActiveRecord::Migration
   def change
     create_table :reviews do |t|
       t.string :title
-      t.text :content
+      t.string :asin
+      t.text   :content
       t.string :rating
-      t.date :date
+      t.date   :date
       t.string :votes
       t.string :low_sentence
       t.float  :low_score

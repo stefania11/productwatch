@@ -3,7 +3,6 @@ require 'open-uri'
 
 module ReviewParser
   include SentimentAnalyzer
-  include ProfileParser
 
   BASE_URL = "http://www.amazon.com"
   NUMBER_OF_PAGES = 5
@@ -19,6 +18,7 @@ module ReviewParser
         review_array <<
           Review.new.tap do |r|
             r.title = review.css('a.review-title').text
+            r.asin = review.first.last
             r.content = review.css('span.review-text').text
             r.rating = review.css('i.review-rating').text
             r.date = review.css('span.review-date').text.to_date

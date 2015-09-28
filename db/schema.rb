@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150922174632) do
 
   create_table "reviews", force: :cascade do |t|
     t.string   "title"
+    t.string   "asin"
     t.text     "content"
     t.string   "rating"
     t.date     "date"

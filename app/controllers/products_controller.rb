@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @reviews = ReviewParser.call(@product.asin, @product.id)
     @dashboard = Product.dashboard_text(@product)
-    @chart_data = Product.get_chart_data(@product.reviews)
+    @chart_data = Product.get_chart_data(@reviews)
     @chart = Product.create_chart(@chart_data)
     @chart_sentiment_data = Product.get_sentiment_chart_data(@reviews)
     @chart_sentiment = Product.create_sentiment_chart(@chart_sentiment_data)
