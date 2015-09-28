@@ -5,7 +5,7 @@ module ReviewParser
   include SentimentAnalyzer
 
   BASE_URL = "http://www.amazon.com"
-  NUMBER_OF_PAGES = 5
+  NUMBER_OF_PAGES = 3
 
   def self.call(product_asin, product_db_id)
     review_array = []

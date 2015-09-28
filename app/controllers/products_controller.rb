@@ -5,7 +5,11 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @reviews = ReviewParser.call(@product.asin, @product.id)
+    if @product.reviews.empty?
+      @reviews = ReviewParser.call(@product.asin, @product.id)
+    else
+      @reviews = @product.reviews
+    end
     @dashboard = Product.dashboard_text(@product)
     @chart_data = Product.get_chart_data(@reviews)
     @chart = Product.create_chart(@chart_data)

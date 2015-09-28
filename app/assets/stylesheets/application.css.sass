@@ -13,8 +13,8 @@
  *= require_tree .
  *= require_self
  */
-$body-bg: #ecf0f1
-$navbar-inverse-bg: #444
+$body-bg: rgb(22,32,54)
+$navbar-inverse-bg: rgba(22,32,54,0.9)
 $navbar-inverse-link-color: white
 $brand-primary: #08306B
 $pannel-primary: #08306B
@@ -35,8 +35,6 @@ body#homepage
   -moz-background-size: cover
   -o-background-size: cover
   background-size: cover
-  // https://images.unsplash.com/uploads/1413395496082cbc91228/43e39040?q=80&fm=jpg&s=ef4acb9f201cc553006a568c8b616165
-  // https://images.unsplash.com/36/X7L5hgFXQZazzPaK3goC_14084990857_88cabf3b6d_o.jpg?q=80&fm=jpg&s=24483760876f49ba7ed460c10807f555
 
 h1
   font-weight: 100
@@ -47,3 +45,6 @@ h2, h3, h4, h5, h6
 .footer
   text-align: center
   padding: 12px 10px 0px 10px
+
+.navbar-inverse
+  border: none !important
