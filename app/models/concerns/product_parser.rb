@@ -12,14 +12,19 @@ module ProductParser
         list_of_products = products['ItemSearchResponse']['Items']['Item']
         product_objects << list_of_products.map do |product|
           if product['CustomerReviews']['HasReviews'] == 'true'
-            Product.new.tap do |p|
-              p.asin = product['ASIN']
-              p.title = product['ItemAttributes']['Title']
-              p.image_url = get_image(product)
-              p.price = get_price(product)
-              p.product_group = product['ItemAttributes']['ProductGroup']
-              p.manufacturer = product['ItemAttributes']['Manufacturer']
-              p.save
+            pq = Product.where(asin: product['ASIN'])
+            if pq == []
+              Product.new.tap do |p|
+                p.asin = product['ASIN']
+                p.title = product['ItemAttributes']['Title']
+                p.image_url = get_image(product)
+                p.price = get_price(product)
+                p.product_group = product['ItemAttributes']['ProductGroup']
+                p.manufacturer = product['ItemAttributes']['Manufacturer']
+                p.save
+              end
+            else
+              pq
             end
           end
         end
