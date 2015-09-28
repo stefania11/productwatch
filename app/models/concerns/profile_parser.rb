@@ -57,11 +57,11 @@ module ProfileParser
   }
 
   def self.get_author_location_and_name(author_url)
-    page = Nokogiri::HTML(open(author_url, 'User-Agent' => 'chrome'))
-    raw_location = page.css('div.profile-info .a-row.a-spacing-micro span.a-size-small.a-color-secondary').text.upcase
-    name = page.css('div.profile-details-column div.a-section').text
-
-      location =   
+    begin
+      page = Nokogiri::HTML(open(author_url, 'User-Agent' => 'chrome'))
+      raw_location = page.css('div.profile-info .a-row.a-spacing-micro span.a-size-small.a-color-secondary').text.upcase
+      name = page.css('div.profile-details-column div.a-section').text
+      location =
       if raw_location != ''
         state_short = LOCATION_HASH.values.select { |state| state if raw_location.include?(state) }
         state_full = LOCATION_HASH.keys.select { |state| state if raw_location.include?(state.upcase) }
@@ -73,8 +73,9 @@ module ProfileParser
       else
         location = 'Not Specified'
       end
-    
-    return [location,name]
-    
+      return [location,name]
+    rescue Exception
+      return ['Not Specified','Anonymous']
+    end
   end
 end

@@ -50,7 +50,15 @@ class Product < ActiveRecord::Base
       f.chart(type: 'column')
       f.xAxis(categories: ["positive","negative"])
       f.yAxis(title: {text: 'Sentiment Count', margin: 50}, startOnTick: true, endOnTick: true)
-      f.series(name: 'Sentiment Count', data: [chart_data[:positive], chart_data[:negative]])
+      f.plotOptions(column: {dataLabels: {enabled: true}, showInLegend: true})
+      f.series({
+        :type=> 'column',
+        :name=> 'Sentiment Count',
+        :data => [
+          ['Positive', chart_data[:positive]],
+          ['Negative', chart_data[:negative]]
+        ]
+      })
       f.legend(align: 'right', verticalAlign: 'top', y: 75, x: -50, layout: 'vertical')
     end
   end
@@ -58,14 +66,14 @@ class Product < ActiveRecord::Base
   def self.create_sentiment_pie_chart(chart_data)
     LazyHighCharts::HighChart.new('graph') do |f|
       f.chart(type: 'pie')
-      f.plotOptions(pie: {dataLabels: {enabled: false}, showInLegend: true})
+      f.plotOptions(pie: {dataLabels: {enabled: true}, showInLegend: true})
       f.series({
-               :type=> 'pie',
-               :name=> 'Sentiment Count',
-               :data=> [
-                  ['positive', chart_data[:positive]],
-                  ['negative', chart_data[:negative]]
-               ]
+        :type=> 'pie',
+        :name=> 'Sentiment Count',
+        :data=> [
+           ['Positive', chart_data[:positive]],
+           ['Negative', chart_data[:negative]]
+        ]
       })
       f.legend(align: 'right', verticalAlign: 'top', y: 75, x: -50, layout: 'vertical')
     end
@@ -78,10 +86,14 @@ class Product < ActiveRecord::Base
     worst_review = product.reviews.first
 
     product.reviews.each do |review|
-      best_sentence = review if review.high_score > best_sentence.high_score
-      worst_sentence = review if review.low_score < worst_sentence.low_score
-      best_review = review if review.overall_score > best_review.overall_score
-      worst_review = review if review.overall_score < worst_review.overall_score
+      begin
+        best_sentence = review if review.high_score > best_sentence.high_score
+        worst_sentence = review if review.low_score < worst_sentence.low_score
+        best_review = review if review.overall_score > best_review.overall_score
+        worst_review = review if review.overall_score < worst_review.overall_score
+      rescue Exception
+        next
+      end
     end
 
     return {
